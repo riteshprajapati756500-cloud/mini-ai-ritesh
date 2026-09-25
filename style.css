@@ -1,0 +1,366 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+}
+
+.app {
+    width: 100%;
+    max-width: 1000px;
+    height: 100vh;
+    margin: auto;
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+
+header {
+    height: 75px;
+    background: #111827;
+    color: white;
+    padding: 14px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 21px;
+}
+
+header p {
+    margin: 3px 0 0;
+    font-size: 13px;
+    opacity: 0.65;
+}
+
+header button {
+    border: 1px solid #374151;
+    background: #1f2937;
+    color: white;
+    padding: 9px 14px;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+header button:hover {
+    background: #374151;
+}
+
+/* CHAT */
+
+main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 28px;
+}
+
+.message {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 22px;
+    align-items: flex-start;
+}
+
+.message.user {
+    flex-direction: row-reverse;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+}
+
+.message.user .avatar {
+    background: #2563eb;
+}
+
+.bubble {
+    max-width: 72%;
+    padding: 13px 17px;
+    border-radius: 15px;
+    background: #f1f5f9;
+    color: #111827;
+    line-height: 1.55;
+    white-space: pre-wrap;
+}
+
+.message.user .bubble {
+    background: #2563eb;
+    color: white;
+}
+
+/* INPUT */
+
+footer {
+    padding: 16px 20px;
+    border-top: 1px solid #e5e7eb;
+    background: white;
+    display: flex;
+    gap: 10px;
+}
+
+footer input {
+    flex: 1;
+    padding: 14px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
+}
+
+footer input:focus {
+    border-color: #2563eb;
+}
+
+footer button {
+    width: 52px;
+    border: none;
+    border-radius: 12px;
+    background: #2563eb;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+footer button:hover {
+    background: #1d4ed8;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    main {
+        padding: 16px;
+    }
+
+    .bubble {
+        max-width: 82%;
+    }
+
+    header {
+        padding: 12px 15px;
+    }
+
+    footer {
+        padding: 12px;
+    }
+}/* Dark Mode */
+
+body.dark {
+    background: #0f172a;
+}
+
+body.dark .app {
+    background: #111827;
+}
+
+body.dark main {
+    background: #111827;
+}
+
+body.dark .bubble {
+    background: #1f2937;
+    color: #f9fafb;
+}
+
+body.dark .message.user .bubble {
+    background: #2563eb;
+    color: white;
+}
+
+body.dark footer {
+    background: #111827;
+    border-top-color: #374151;
+}
+
+body.dark footer input {
+    background: #1f2937;
+    color: white;
+    border-color: #4b5563;
+}
+
+body.dark footer input::placeholder {
+    color: #9ca3af;
+}
+
+body.dark header button {
+    background: #374151;
+    border-color: #4b5563;
+    color: white;
+}
+
+body.dark .avatar {
+    background: #374151;
+}/* =========================
+   MEMORY PANEL
+========================= */
+
+.memory-panel {
+
+    display: none;
+
+    position: absolute;
+
+    top: 80px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 90%;
+    max-width: 600px;
+
+    max-height: 70vh;
+
+    background: white;
+
+    border-radius: 16px;
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+
+    z-index: 100;
+
+    overflow: hidden;
+}
+
+
+.memory-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 18px 20px;
+
+    border-bottom: 1px solid #ddd;
+}
+
+
+.memory-header h2 {
+
+    margin: 0;
+
+    font-size: 20px;
+}
+
+
+.memory-header button {
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+
+#memoryList {
+
+    padding: 20px;
+
+    max-height: 50vh;
+
+    overflow-y: auto;
+}
+
+
+.memory-item {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px;
+
+    margin-bottom: 10px;
+
+    background: #f4f7fb;
+
+    border-radius: 10px;
+}
+
+
+.memory-item span {
+
+    flex: 1;
+
+    word-break: break-word;
+}
+
+
+.memory-delete {
+
+    border: none;
+
+    background: #ef4444;
+
+    color: white;
+
+    padding: 7px 10px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+
+/* DARK MODE */
+
+body.dark .memory-panel {
+
+    background: #111827;
+
+    color: white;
+}
+
+
+body.dark .memory-header {
+
+    border-bottom-color: #374151;
+}
+
+
+body.dark .memory-item {
+
+    background: #1f2937;
+}
