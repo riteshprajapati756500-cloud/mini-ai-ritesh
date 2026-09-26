@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, jsonify
 import requests
 import json
 import os
-
+from huggingface_hub import InferenceClient
 app = Flask(__name__)
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
